@@ -1,0 +1,47 @@
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+public class MainActivity extends AppCompatActivity {
+
+    private int currenColorIndex=0;
+    private final int[] colors = {
+            Color.RED,
+            Color.BLUE,
+            Color.GREEN,
+            Color.YELLOW,
+            Color.GRAY,
+            Color.WHITE,
+            Color.CYAN,
+            Color.TRANSPARENT,
+            Color.MAGENTA,
+            Color.DKGRAY
+    };
+    Button btn_col;
+    LinearLayout layout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btn_col=findViewById(R.id.col_cha);
+        layout=findViewById(R.id.linearlayout);
+
+        btn_col.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               layout.setBackgroundColor(colors[currenColorIndex]);
+
+               currenColorIndex=(currenColorIndex+1)%colors.length;
+            }
+        });
+
+    }
+}
